@@ -90,6 +90,11 @@ contexts:
           - ${CARGO_ENV} cargo -Z unstable-options -C${appdir} test ${FEATURES},riot-rs/threading
         build: false
 
+      cargo-test-expand:
+        cmd:
+          - ${CARGO_ENV} cargo -Z unstable-options -C${appdir} expand ${FEATURES},riot-rs/threading --test example_test
+        build: false
+
       debug:
         cmd:
           - cd examples/${app} && ${CARGO_ENV} cargo ${CARGO_ARGS} run --${PROFILE} ${FEATURES}
