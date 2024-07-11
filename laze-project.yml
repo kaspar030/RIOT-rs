@@ -87,7 +87,7 @@ contexts:
 
       cargo-test:
         cmd:
-          - ${CARGO_ENV} cargo -Z unstable-options -C${appdir} nextest ${FEATURES},riot-rs/threading
+          - ${CARGO_ENV} cargo -Z unstable-options -C${appdir} test ${FEATURES},riot-rs/threading
         build: false
 
       debug:
