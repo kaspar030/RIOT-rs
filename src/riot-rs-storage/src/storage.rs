@@ -7,49 +7,19 @@ pub use serde::{Deserialize, Serialize};
 
 use sequential_storage::{
     cache::NoCache,
-    map::{fetch_item, remove_item, store_item, SerializationError, Value},
+    map::{fetch_item, remove_item, store_item, Value},
 };
 
 pub const MAX_KEY_LEN: usize = 64usize;
 pub const DATA_BUFFER_SIZE: usize = 128usize;
 
+/// Object holding an instance of a Key/Value storage.
+///
+/// You should probably look into using the global instance accessible via
+/// `riot_rs_storage::storage::{get,put,del}`.
 pub struct Storage<F> {
     flash: F,
     storage_range: Range<u32>,
-}
-
-pub struct StringValue {
-    pub inner: ArrayString<MAX_KEY_LEN>,
-}
-
-impl StringValue {
-    pub fn from(string: &str) -> Self {
-        Self {
-            inner: ArrayString::<MAX_KEY_LEN>::from(string).unwrap(),
-        }
-    }
-}
-
-impl<'d> Value<'d> for StringValue {
-    fn serialize_into(
-        &self,
-        buffer: &mut [u8],
-    ) -> Result<usize, sequential_storage::map::SerializationError> {
-        buffer[0..self.inner.len()].copy_from_slice(self.inner.as_bytes());
-        Ok(self.inner.len())
-    }
-    fn deserialize_from(
-        buffer: &'d [u8],
-    ) -> Result<Self, sequential_storage::map::SerializationError> {
-        let mut output = ArrayString::<MAX_KEY_LEN>::new();
-        output
-            .try_push_str(
-                core::str::from_utf8(buffer).map_err(|_| SerializationError::InvalidFormat)?,
-            )
-            .map_err(|_| SerializationError::InvalidFormat)?;
-
-        Ok(Self { inner: output })
-    }
 }
 
 pub use crate::postcard_value::PostcardValue;
@@ -97,6 +67,9 @@ impl<F: NorFlash> Storage<F> {
         .await
     }
 
+    /// Stores a key-value pair into flash memory.
+    ///
+    /// It will overwrite the last value that has the same key.
     pub async fn put<'d, V>(
         &mut self,
         key: &str,
@@ -108,6 +81,9 @@ impl<F: NorFlash> Storage<F> {
         self.put_raw(key, value.into()).await
     }
 
+    /// Gets the last stored value from the flash that is associated with the given key.
+    ///
+    /// If no value with the key is found, None is returned.
     pub async fn get<V>(
         &mut self,
         key: &str,
@@ -131,6 +107,17 @@ impl<F: NorFlash> Storage<F> {
 }
 
 impl<F: MultiwriteNorFlash> Storage<F> {
+    /// Deletes an item from flash.
+    ///
+    /// Additional calls to [`get()`] with the same key will return None until
+    /// a new one is stored again.
+    ///
+    /// <div class="warning">
+    /// This is really slow!
+    ///
+    /// All items in flash have to be read and deserialized to find the items with the key.
+    /// This is unlikely to be cached well.
+    /// </div>
     pub async fn del(
         &mut self,
         key: &str,
