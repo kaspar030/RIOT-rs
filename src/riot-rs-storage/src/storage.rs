@@ -109,7 +109,7 @@ impl<F: NorFlash> Storage<F> {
 impl<F: MultiwriteNorFlash> Storage<F> {
     /// Deletes an item from flash.
     ///
-    /// Additional calls to [`get()`] with the same key will return None until
+    /// Additional calls to [`Storage::get()`] with the same key will return None until
     /// a new one is stored again.
     ///
     /// <div class="warning">
