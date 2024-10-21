@@ -387,7 +387,6 @@ modules:
           - -Clink-arg=-Tlink.x
           - -Clink-arg=-Tdevice.x
           - -Clink-arg=-Tisr_stack.x
-          - -Clink-arg=-Tstorage.x
           - --cfg context=\"cortex-m\"
 
   - name: thumbv6m-none-eabi
@@ -602,6 +601,8 @@ modules:
       global:
         FEATURES:
           - riot-rs/storage
+        RUSTFLAGS:
+          - -Clink-arg=-Tstorage.x
 
   - name: sw/threading
     conflicts:
