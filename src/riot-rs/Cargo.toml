@@ -30,9 +30,7 @@ default = ["riot-rs-rt/_panic-handler"]
 ## Enables GPIO interrupt support.
 external-interrupts = ["riot-rs-embassy/external-interrupts"]
 ## Enables storage support.
-storage = [
-  "riot-rs-embassy/storage", "dep:riot-rs-storage",
-]
+storage = ["riot-rs-embassy/storage", "dep:riot-rs-storage"]
 ## Enables threading support, see the [`macro@thread`] attribute macro.
 threading = [
   "dep:riot-rs-threads",
