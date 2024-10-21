@@ -160,7 +160,6 @@ unsafe extern "C" fn PendSV() {
             999:
             .word 0xFFFFFFFD
             ",
-            options(noreturn)
         )
     };
 }
