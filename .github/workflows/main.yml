@@ -206,7 +206,7 @@ jobs:
       - run: echo 'RUSTFLAGS=' >> $GITHUB_ENV
 
       - name: rustdoc
-        run: RUSTDOCFLAGS='-D warnings' cargo doc -p riot-rs --features bench,csprng,executor-thread,external-interrupts,hwrng,i2c,no-boards,random,storage,threading,usb
+        run: RUSTDOCFLAGS='-D warnings' cargo doc -p riot-rs --features bench,csprng,executor-thread,external-interrupts,hwrng,i2c,no-boards,random,spi,storage,threading,usb
 
       - name: rustdoc for ESP32
         run: RUSTDOCFLAGS='-D warnings --cfg context="esp32c6"' cargo doc --target=riscv32imac-unknown-none-elf --features external-interrupts,i2c,spi,esp-hal/esp32c6,esp-hal-embassy/esp32c6 -p riot-rs-esp
