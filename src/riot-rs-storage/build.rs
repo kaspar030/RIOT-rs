@@ -7,9 +7,8 @@ fn main() {
     const STORAGE_SIZE_TOTAL: u32 = 0x2000;
 
     // need at least two flash pages
-    // TODO: remove allow once this is dynamic
-    #[allow(clippy::assertions_on_constants)]
-    assert!(STORAGE_SIZE_TOTAL / FLASH_PAGE_SIZE >= 2);
+    // TODO: uncomment once this is not always true
+    //assert!(STORAGE_SIZE_TOTAL / FLASH_PAGE_SIZE >= 2);
 
     // Put the linker script somewhere the linker can find it
     let out = &PathBuf::from(env::var_os("OUT_DIR").unwrap());
