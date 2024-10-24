@@ -19,7 +19,7 @@ pub const MAX_KEY_LEN: usize = 64usize;
 /// Data buffer length.
 pub const DATA_BUFFER_SIZE: usize = 128usize;
 
-/// Object holding an instance of a Key/Value storage.
+/// Object holding an instance of a key-value pair storage.
 ///
 /// You should probably look into using the global instance accessible via
 /// `riot_rs_storage::storage::{get,put,del}`.
