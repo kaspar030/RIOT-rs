@@ -12,4 +12,4 @@ riot-rs-boards = { path = "../../src/riot-rs-boards" }
 embassy-executor = { workspace = true, default-features = false }
 arrayvec = { version = "0.7.4", default-features = false, features = ["serde"] }
 heapless = { workspace = true, features = ["serde", "defmt-03"] }
-serde = { workspace = true, default-features = false }
+serde = { workspace = true, default-features = false, features = ["derive"] }
