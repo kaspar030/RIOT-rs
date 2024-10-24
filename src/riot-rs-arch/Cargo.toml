@@ -28,6 +28,7 @@ embassy-hal-internal = { workspace = true }
 embassy-usb = { workspace = true }
 embedded-hal = { workspace = true }
 embedded-hal-async = { workspace = true }
+embedded-storage-async = { workspace = true }
 riot-rs-embassy-common = { workspace = true, features = [
   "external-interrupts",
   "i2c",
@@ -71,10 +72,10 @@ hwrng = [
 ]
 
 storage = [
-  #"riot-rs-esp/hwrng",
-  "riot-rs-nrf/hwrng",
-  "riot-rs-rp/hwrng",
-  #"riot-rs-stm32/hwrng",
+  #"riot-rs-esp/storage",
+  "riot-rs-nrf/storage",
+  "riot-rs-rp/storage",
+  #"riot-rs-stm32/storage",
 ]
 
 wifi-cyw43 = ["riot-rs-rp/wifi-cyw43"]
