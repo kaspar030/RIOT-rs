@@ -18,23 +18,7 @@ use embassy_sync::{
     once_lock::OnceLock,
 };
 
-cfg_if::cfg_if! {
-    if #[cfg(context = "nrf")] {
-        pub use riot_rs_nrf as arch;
-    } else if #[cfg(context = "rp")] {
-        pub use riot_rs_rp as arch;
-    } else if #[cfg(context = "esp")] {
-        pub use riot_rs_esp as arch;
-    } else if #[cfg(context = "stm32")] {
-        pub use riot_rs_stm32 as arch;
-    } else if #[cfg(context = "riot-rs")] {
-        compile_error!("this architecture is not supported");
-    } else {
-        pub mod arch;
-    }
-}
-
-use arch::{
+use riot_rs_arch::{
     storage::{init as flash_init, Flash, FlashError},
     OptionalPeripherals,
 };
