@@ -75,7 +75,7 @@ usb-ethernet = ["usb", "net"]
 hwrng = ["riot-rs-arch/hwrng"]
 
 ## Enable storage support [`riot-rs::storage`].
-storage = ["dep:riot-rs-storage", "riot-rs-nrf/storage", "riot-rs-rp/storage", "time"]
+storage = ["dep:riot-rs-storage", "riot-rs-arch/storage", "time"]
 
 wifi = []
 wifi-cyw43 = ["riot-rs-arch/wifi-cyw43", "net", "wifi"]
