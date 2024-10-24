@@ -4,9 +4,9 @@
 // TODO: overhaul errors
 #![allow(clippy::missing_errors_doc)]
 
-//! Key/Value storage on flash.
+//! key-value pair storage on flash.
 //!
-//! This crate provides a Key/Value persistent storage.
+//! This crate provides a key-value pair persistent storage.
 //!
 //! Currently the same type used for serializing must be used for deserializing.
 //! While not doing so won't cause unsafety, in might return garbage data, or panics.
