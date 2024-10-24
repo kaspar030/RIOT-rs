@@ -70,6 +70,13 @@ hwrng = [
   "riot-rs-stm32/hwrng",
 ]
 
+storage = [
+  #"riot-rs-esp/hwrng",
+  "riot-rs-nrf/hwrng",
+  "riot-rs-rp/hwrng",
+  #"riot-rs-stm32/hwrng",
+]
+
 wifi-cyw43 = ["riot-rs-rp/wifi-cyw43"]
 wifi-esp = ["riot-rs-esp/wifi-esp"]
 
