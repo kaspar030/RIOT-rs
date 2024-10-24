@@ -114,12 +114,9 @@ once_cell = { version = "=1.19.0", default-features = false, features = [
   "critical-section",
 ] }
 paste = { version = "1.0" }
-<<<<<<< HEAD
+
 rp-pac = { version = "6.0", default-features = false }
-||||||| parent of 8b346b9e (feat(storage): introduce storage API)
-=======
 serde = { version = "1.0.197", default-features = false }
->>>>>>> 8b346b9e (feat(storage): introduce storage API)
 static_cell = { version = "2.0.0", features = ["nightly"] }
 
 [profile.dev]
