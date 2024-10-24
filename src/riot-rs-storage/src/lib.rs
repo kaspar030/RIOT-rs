@@ -71,7 +71,7 @@ fn init_(p: &mut OptionalPeripherals) {
 ///
 /// # Panics
 ///
-/// Panics when initiliazing the flash fails.
+/// Panics when initializing the flash fails.
 pub async fn init(p: &mut OptionalPeripherals) {
     const MARKER_KEY: &str = "0xdeadcafe";
     const MARKER_VALUE: u32 = 0xdead_cafe;
