@@ -34,8 +34,8 @@ static STORAGE: OnceLock<Mutex<CriticalSectionRawMutex, Storage<Flash>>> = OnceL
 ///
 /// This expects two symbols `__storage_start` and `__storage_end`.
 /// This function is also the place to configure a platform dependent `OFFSET`,
-/// which configures an offset between the linker Flash address map and the
-/// Flash driver address map.
+/// which configures an offset between the linker flash address map and the
+/// flash driver address map.
 // This allow cannot be used on expressions, so opt-out globally. (Needed for the result range
 // expression).
 #[allow(clippy::cast_possible_truncation)]
@@ -59,7 +59,7 @@ fn flash_range_from_linker() -> Range<u32> {
 fn init_(p: &mut OptionalPeripherals) {
     use riot_rs_debug::log::info;
     let flash_range = flash_range_from_linker();
-    info!("storage: using Flash range {}", &flash_range);
+    info!("storage: using flash range {}", &flash_range);
 
     let flash = flash_init(p);
     let _ = STORAGE.init(Mutex::new(Storage::new(flash, flash_range)));
@@ -99,7 +99,7 @@ pub async fn init(p: &mut OptionalPeripherals) {
     }
 }
 
-/// Stores a key-value pair into Flash memory.
+/// Stores a key-value pair into flash memory.
 ///
 /// It will overwrite the last value that has the same key.
 pub async fn insert<'d, V>(key: &str, value: V) -> Result<(), sequential_storage::Error<FlashError>>
@@ -109,7 +109,7 @@ where
     lock().await.insert::<V>(key, value).await
 }
 
-/// Gets the last stored value from the Flash that is associated with the given key.
+/// Gets the last stored value from the flash that is associated with the given key.
 ///
 /// Note: [`get()`] the same value type that was [`insert()`]!
 ///
