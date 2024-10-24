@@ -3901,6 +3901,7 @@ dependencies = [
  "cfg-if",
  "embassy-embedded-hal",
  "embassy-sync 0.6.0",
+ "embassy-time",
  "embedded-storage-async",
  "once_cell",
  "postcard",
