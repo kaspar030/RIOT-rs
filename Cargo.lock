@@ -3061,6 +3061,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "evalexpr"
+version = "11.3.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b6aff27af350e7b53e82aac3e5ab6389abd8f280640ac034508dff0608c4c7e5"
+
+[[package]]
 name = "event-listener"
 version = "2.5.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3986,15 +3992,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "itertools"
-version = "0.15.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8b4baf93f58d4425749ca49a51c50ebab072c5df6994d08fed93541c331481dc"
-dependencies = [
- "either",
-]
-
-[[package]]
 name = "itoa"
 version = "1.0.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4113,9 +4110,12 @@ dependencies = [
 
 [[package]]
 name = "ld-memory"
-version = "0.2.9"
+version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "16187c4751af0c33941a689f3e922132b165729cfaa73f592fe5cce7393e9f0c"
+checksum = "afcfbab19a67e18330fd220233a87aacf789fce4c37fd53f7fe721874548d433"
+dependencies = [
+ "evalexpr",
+]
 
 [[package]]
 name = "libc"
@@ -4284,12 +4284,11 @@ checksum = "78ca9ab1a0babb1e7d5695e3530886289c18cf2f87ec19a575a0abdce112e3a3"
 
 [[package]]
 name = "memsolve"
-version = "0.2.1"
+version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "00a7687339c41fe79d013672fde33f414296fa9c8d975703b292edcb80c3bad8"
+checksum = "04abcd11b3a275544a413a8690a868e0df4ea00bb08bc875afe434c0cce4745b"
 dependencies = [
  "conv",
- "itertools 0.15.0",
  "ld-memory",
  "microlp",
  "thiserror",
